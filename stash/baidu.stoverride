@@ -1,0 +1,16 @@
+name: 百度去广告
+desc: 去除百度贴吧开屏广告
+ 
+http:
+  mitm:
+    - tiebac.baidu.com
+  script:
+    - match: ^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/f\/(frs\/(page|threadlist|generalTabList)|pb\/page|excellent\/personalized)$|tiebaads\/commonbatch|c\/s\/sync$)
+      name: tieba-json
+      type: response
+      require-body: true
+      timeout: 10
+script-providers:
+  tieba-json:
+    url: https://raw.githubusercontent.com/app2smile/rules/master/js/tieba-json.js
+    interval: 86400

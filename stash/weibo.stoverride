@@ -1,0 +1,26 @@
+name: 微博去广告
+desc: 去除微博开屏广告
+ 
+http:
+  mitm:
+    - boot.biz.weibo.com
+    - weibointl.api.weibo.cn
+    - weibointl.api.weibo.com
+  url-rewrite:
+    - ^https?:\/\/boot.*weibo\.com\/v\d\/ad\/realtime - reject-200
+  script:
+    - match: ^https?:\/\/boot.*weibo\.com\/v\d\/ad\/preload
+      name: weibo_json
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*get_coopen_ads
+      name: weibo_json
+      type: response
+      require-body: true
+      timeout: 10
+
+script-providers:
+  weibo_json:
+    url: https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+    interval: 86400

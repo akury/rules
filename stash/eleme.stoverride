@@ -1,0 +1,15 @@
+name: 饿了么去广告
+desc: 去除饿了么开屏广告
+ 
+http:
+  mitm:
+    - elemecdn.com
+    - fuss10.elemecdn.com
+    - www1.elecfans.com
+  url-rewrite:
+    - ^https?:\/\/elemecdn.com\/.+\/sitemap - reject
+    - ^https?:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4} - reject
+    - ^https?:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} - reject
+    - ^https?:\/\/fuss10.elemecdn.com\/.+.mp4 - reject
+    - ^https?:\/\/www1.elecfans.com\/www\/delivery\/ - reject
+ 

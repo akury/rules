@@ -1,0 +1,11 @@
+name: 小米去广告
+desc: 去除小米开屏广告
+ 
+http:
+  mitm:
+    - api.m.mi.com
+    - shopapi.io.mi.com
+  url-rewrite:
+    - ^https?:\/\/api\.m\.mi\.com\/v1\/app\/start - reject
+    - ^https?:\/\/shopapi\.io\.mi\.com\/mtop\/mf\/resource\/homePage\/pageConfig - reject
+

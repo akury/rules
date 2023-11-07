@@ -1,0 +1,19 @@
+name: BiliBili去广告
+desc: 去除BiliBili开屏广告
+ 
+http:
+  mitm:
+    - app.bilibili.com
+  url-rewrite:
+    - ^https://app.bilibili.com/x/v2/splash/show - reject-dict
+  script:
+    - match: ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list
+      name: bilibili_json
+      type: response
+      require-body: true
+      timeout: 10
+
+script-providers:
+  bilibili_json:
+    url: https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+    interval: 86400

@@ -1,0 +1,9 @@
+name: 拼多多去广告
+desc: 去除拼多多开屏广告
+ 
+http:
+  mitm:
+    - api.pinduoduo.com
+    - api.yangkeduo.com
+  url-rewrite:
+    - ^https?:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash - reject

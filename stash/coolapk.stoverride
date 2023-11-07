@@ -1,0 +1,17 @@
+name: 酷安去广告
+desc: 去除酷安开屏广告
+ 
+http:
+  mitm:
+    - api.coolapk.com
+  script:
+    - match: ^https?:\/\/api.coolapk.com\/v6\/main\/init
+      name: coolapk
+      type: response
+      require-body: true
+      timeout: 10
+
+script-providers:
+  coolapk:
+    url: https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+    interval: 86400
